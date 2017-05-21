@@ -1,0 +1,43 @@
+h1
+{
+	margin: 0;
+	text-align: center;
+	color: gold;
+	font-size: 40pt;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-image: url("titre_fond.jpg");
+}
+
+.menu
+{
+	list-style-type: none;
+	margin: 0;
+	overflow: hidden;
+	padding: 0;
+}
+
+.menu li
+{
+	float: left;
+}
+
+.menu a
+{
+	color: gainsboro;
+	padding: 10px 20px;
+	text-decoration: none;
+	display: block;
+	font-family: Arial;
+}
+
+.menu, .menu a
+{
+	background-color: rgb(28,20,35);
+}
+
+.menu a:hover
+{
+	background-color: rgb(56,40,70);
+	color: khaki;
+}

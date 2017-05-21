@@ -1,0 +1,33 @@
+body
+{
+	background-color: aliceblue;
+}
+
+h2, h3, p, label
+{
+	color: dimgrey;
+}
+
+table.caract, .caract th, .caract td
+{
+	border: 1px solid black;
+	border-collapse: collapse;
+	border-color: black;
+	padding: 15px;
+	text-align: center;
+}
+
+.caract th
+{
+	background-color: bisque;
+}
+
+.caract td
+{
+	background-color: white;
+}
+
+.hemis td
+{
+	vertical-align: top;
+}
