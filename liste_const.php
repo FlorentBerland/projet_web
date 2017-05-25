@@ -30,7 +30,7 @@
 			        			die('Erreur : ' . $e->getMessage());
 							}
 		
-							$reponse = $bdd->query('SELECT nomconst, idconst FROM CONSTELLATION WHERE hemisnord');
+							$reponse = $bdd->query('SELECT nomconst, idconst FROM CONSTELLATION WHERE hemisnord=b\'1\'');
 							while($donnees = $reponse->fetch())
 							{
 						?>
@@ -53,7 +53,7 @@
 			        			die('Erreur : ' . $e->getMessage());
 							}
 		
-							$reponse = $bdd->query('SELECT nomconst, idconst FROM CONSTELLATION WHERE hemissud');
+							$reponse = $bdd->query('SELECT nomconst, idconst FROM CONSTELLATION WHERE hemissud=b\'1\'');
 							while($donnees = $reponse->fetch())
 							{
 						?>
