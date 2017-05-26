@@ -15,21 +15,30 @@
 			   		die('Erreur : ' . $e->getMessage());
 				}
 				// Données de l'étoile
-				$reponse = $bdd->query('SELECT * FROM ETOILE WHERE idsys='.$_GET['idsys'].' AND idet=\''.$_GET['idcomp'].'\'');
+				//$reponse = $bdd->query('SELECT * FROM ETOILE WHERE idsys='.$_GET['idsys'].' AND idet=\''.$_GET['idcomp'].'\'');
+				$reponse = $bdd->prepare('SELECT * FROM ETOILE WHERE idsys = ? AND idet = ?');
+				$reponse->execute(array($_GET['idsys'], $_GET['idcomp']));
 				$donnees = $reponse->fetch();
 				$reponse->closeCursor();
 
 				// Données du système auquel elle appartient
-				$reponse = $bdd->query('SELECT nomsys,idconst FROM SYSTEME WHERE idsys='.$donnees['idsys']);
+				//$reponse = $bdd->query('SELECT nomsys,idconst FROM SYSTEME WHERE idsys='.$donnees['idsys']);
+				$reponse = $bdd->prepare('SELECT nomsys,idconst FROM SYSTEME WHERE idsys = ?');
+				$reponse->execute(array($donnees['idsys']));
 				$donnees_sys = $reponse->fetch();
 				$reponse->closeCursor();
 
 				// Données de la constellation à laquelle elle aprtient
-				$reponse = $bdd->query('SELECT nomconst FROM CONSTELLATION WHERE idconst='.$donnees_sys['idconst']);
+				//$reponse = $bdd->query('SELECT nomconst FROM CONSTELLATION WHERE idconst='.$donnees_sys['idconst']);
+				$reponse = $bdd->prepare('SELECT nomconst FROM CONSTELLATION WHERE idconst = ?');
+				$reponse->execute(array($donnees_sys['idconst']));
 				$donnees_const = $reponse->fetch();
 				$reponse->closeCursor();
 
-				$reponse = $bdd->query('SELECT liblum FROM CLASSELUM WHERE idlum='.$donnees['idlum']);
+				// Obtention de toutes les particularités spectrales de l'étoile
+				//$reponse = $bdd->query('SELECT liblum FROM CLASSELUM WHERE idlum='.$donnees['idlum']);
+				$reponse = $bdd->prepare('SELECT liblum FROM CLASSELUM WHERE idlum = ?');
+				$reponse->execute(array($donnees['idlum']));
 				$donnees_lum = $reponse->fetch();
 				$reponse->closeCursor();
 

@@ -15,7 +15,9 @@
 			   		die('Erreur : ' . $e->getMessage());
 				}
 
-				$reponse = $bdd->query('SELECT * FROM CONSTELLATION WHERE idconst='.$_GET['id']);
+				//$reponse = $bdd->query('SELECT * FROM CONSTELLATION WHERE idconst='.$_GET['id']);
+				$reponse = $bdd->prepare('SELECT * FROM CONSTELLATION WHERE idconst = ?');
+				$reponse->execute(array($_GET['id']));
 				$nom_constellation = NULL;
 				if($donnees = $reponse->fetch())
 				{
@@ -45,7 +47,9 @@
 		<h3>Etoiles recencées</h3>
 		<ul type="disk">
 		<?php // Obtention du nom et de l'id de toutes les étoiles composant la constellation
-			$reponse = $bdd->query('SELECT idsys,nomsys FROM SYSTEME WHERE idconst='.$_GET['id']);
+			//$reponse = $bdd->query('SELECT idsys,nomsys FROM SYSTEME WHERE idconst = '.$_GET['id']);
+			$reponse = $bdd->prepare('SELECT idsys,nomsys FROM SYSTEME WHERE idconst = ?');
+			$reponse->execute(array($_GET['id']));
 			while($donnees = $reponse->fetch())
 			{
 		?>

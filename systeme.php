@@ -15,12 +15,16 @@
 			   		die('Erreur : ' . $e->getMessage());
 				}
 
-				$reponse = $bdd->query('SELECT * FROM SYSTEME WHERE idsys='.$_GET['id']);
+				//$reponse = $bdd->query('SELECT * FROM SYSTEME WHERE idsys='.$_GET['id']);
+				$reponse = $bdd->prepare('SELECT * FROM SYSTEME WHERE idsys = ?');
+				$reponse->execute(array($_GET['id']));
 				$donnees = $reponse->fetch();
 				$reponse->closeCursor();
 
 				// Obtention du nom de la constellation qui contient ce système
-				$reponse = $bdd->query('SELECT nomconst FROM CONSTELLATION WHERE idconst='.$donnees['idconst']);
+				//$reponse = $bdd->query('SELECT nomconst FROM CONSTELLATION WHERE idconst='.$donnees['idconst']);
+				$reponse = $bdd->prepare('SELECT nomconst FROM CONSTELLATION WHERE idconst = ?');
+				$reponse->execute(array($donnees['idconst']));
 				$nomconst = $reponse->fetch()['nomconst'];
 				$reponse->closeCursor();
 			}
@@ -44,7 +48,9 @@
 		<h3>Composantes</h3>
 		<ul type="disk">
 		<?php // Obtention de composantes du système
-			$reponse = $bdd->query('SELECT idet FROM ETOILE WHERE idsys='.$donnees['idsys']);
+			//$reponse = $bdd->query('SELECT idet FROM ETOILE WHERE idsys='.$donnees['idsys']);
+			$reponse = $bdd->prepare('SELECT idet FROM ETOILE WHERE idsys = ?');
+			$reponse->execute(array($donnees['idsys']));
 			while($composante = $reponse->fetch())
 			{
 		?>
