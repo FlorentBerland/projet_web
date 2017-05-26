@@ -8,6 +8,11 @@ h2, h3, p, label
 	color: dimgrey;
 }
 
+p
+{
+	text-align: justify;
+}
+
 table.caract, .caract th, .caract td
 {
 	border: 1px solid black;
