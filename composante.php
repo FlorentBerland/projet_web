@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="styles.css">
+		<?php include("head.php") ?>
 		<?php // Obtention des données à partir des id fournis
 			if(isset($_GET['idsys']) && isset($_GET['idcomp']))
 			{

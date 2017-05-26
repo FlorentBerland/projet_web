@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta charset="utf-8">
-		<link rel="stylesheet" type="text/css" href="styles.css">
+		<?php include("head.php") ?>
 		<?php // Obtention du nom du système à partir de l'id fourni dans l'url
 			if(isset($_GET['id']))
 			{
