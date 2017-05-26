@@ -13,5 +13,8 @@
 
 		<h2>Bases de données</h2>
 		<h2>Polytech</h2>
+		<ul>
+			<li>Polytech Montpellier : <a href="http://www.polytech-montpellier.fr/">http://www.polytech-montpellier.fr/</li>
+		</ul>
 	</body>
 </html>
